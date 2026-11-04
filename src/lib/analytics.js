@@ -13,7 +13,7 @@ import { captureAttribution, getAttribution } from './attribution';
 import { CTA_EVENT_NAME } from '../config/site';
 
 const env = import.meta.env;
-const GTM_ID = env.VITE_GTM_ID;
+const GTM_ID = env.VITE_GTM_ID || 'GTM-N45RDWFT';
 const GA4_ID = env.VITE_GA4_ID;
 const PIXEL_ID = env.VITE_META_PIXEL_ID;
 
