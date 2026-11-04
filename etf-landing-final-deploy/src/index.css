@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    /* 폰트 미확정 — 교체 시 이 두 줄만 수정 (HERO 제목 = display, 본문 = body) */
+    --font-body: 'Pretendard Variable', Pretendard, Inter, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    --font-display: var(--font-body);
+  }
+  html {
+    background: #102D43;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px);
+  }
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    font-feature-settings: 'ss06' 1;
+  }
+  .num { font-family: Inter, 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-feature-settings: 'tnum' 1, 'ss01' 1; }
+  :focus-visible { outline: 3px solid var(--brand-orange); outline-offset: 3px; border-radius: 6px; box-shadow: 0 0 0 6px rgba(15, 20, 53, .55); }
+  img { max-width: 100%; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-page px-5 sm:px-8; }
+
+  /* 전환 CTA — 사이트 전체에서 하나의 시각 언어 */
+  .cta {
+    @apply relative inline-flex min-h-[52px] items-center justify-center gap-2 overflow-hidden rounded-full px-7 text-center text-[1.0625rem] font-bold;
+    background-color: var(--brand-cta);
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    box-shadow: 0 10px 28px -14px rgba(254, 104, 6, 0.7), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, background-color .25s;
+  }
+  .cta::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform .7s ease;
+  }
+  .cta:hover { transform: translateY(-2px); background-color: var(--brand-cta-hover); box-shadow: 0 14px 30px -14px rgba(232,93,4,.85), inset 0 -2px 0 rgba(0,0,0,.12); }
+  .cta:focus-visible { outline-color: var(--brand-orange); }
+  .cta:hover::after { transform: translateX(120%); }
+  .cta:active { transform: translateY(0); }
+  .cta .cta-arrow { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+  .cta:hover .cta-arrow { transform: translateX(4px); }
+  .cta-lg { @apply min-h-[60px] px-9 text-lg; }
+  .cta-sm { @apply min-h-[40px] px-4 text-[0.9375rem]; box-shadow: none; }
+
+  /* 일반 텍스트 링크 — 전환 CTA와 시각적으로 구분 */
+  .text-link {
+    @apply inline-flex items-center gap-1 font-semibold underline decoration-1 underline-offset-[5px];
+    text-decoration-color: currentColor;
+    transition: text-decoration-color .2s, opacity .2s;
+  }
+  .text-link:hover { opacity: .75; }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 75%);
+            mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 75%);
+  }
+}
+
+/* ── 스크롤 등장 ───────────────────────────── */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal-zoom { opacity: 0; transform: scale(.965); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.reveal-zoom.is-in { opacity: 1; transform: none; }
+
+/* ── HERO 타이틀 등장 ──────────────────────── */
+.hero-line { display: block; padding-bottom: .06em; clip-path: inset(-0.06em -100vw 0 -100vw); } /* 세로 마스크만 — 가로로는 글자를 자르지 않음 */
+.hero-line > span { display: inline-block; animation: lineUp .9s cubic-bezier(.2,.75,.2,1) both; animation-delay: var(--d, 0ms); }
+@keyframes lineUp { from { transform: translateY(105%); opacity: 0; } to { transform: none; opacity: 1; } }
+.fade-in { animation: fadeIn .8s ease both; animation-delay: var(--d, 0ms); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── HERO (PC) ─────────────────────────────
+   그라데이션 색은 모바일 HERO 이미지(05_hero_mobile) 제목 2번째 줄에서 추출한 값입니다.
+   이미지의 그라데이션은 글자 위→아래(세로) 방향입니다. */
+:root {
+  /* FIRECLUB 브랜드 (로고 PNG에서 추출) */
+  --brand-orange: #FE6806;      /* 확정 포인트 오렌지 */
+  --brand-cta: #FE6806;         /* CTA 배경 (흰 글자 대비 2.92:1) */
+  --brand-cta-hover: #E85D04;   /* Hover (흰 글자 대비 3.50:1) */
+  --brand-navy: #0F1435;        /* 로고 네이비 */
+  --brand-blue: #17204F;        /* (미사용) 이전 보랏빛 네이비 */
+  /* 블루네이비 배경 팔레트 */
+  --navy-deep: #0D293C;
+  --navy-main: #102D43;
+  --navy-sub: #13354D;
+  /* 서브 포인트 민트 = HERO 그라데이션 민트 */
+  --mint: #86FBD4;
+  --hero-grad-1: #FFFFFF;   /* 글자 상단 */
+  --hero-grad-2: #CAFBE9;   /* 약 47% 지점 */
+  --hero-grad-3: #86FBD4;   /* 약 79% 지점 */
+  --hero-grad-4: #5FFACB;   /* 글자 하단 */
+  --hero-mint-1: #A9F3DA;   /* 원형 배경: 이미지 원형 배경 샘플 */
+  --hero-mint-2: #5ED9B6;
+  --hero-mint-3: #22A88A;
+  /* 비교 카드 */
+  --why-mint: #86FBD4;      /* 비교 카드(오른쪽) 제목·아이콘 — 서브 포인트 민트 */
+  --why-slate: #5E7A88;     /* 회청색 보조 아이콘 */
+}
+.hero-gradient {
+  /* 줄 상자 안에서 한글 글자가 차지하는 높이(약 12~88%)에 이미지의 전환 위치를 맞춤 */
+  background-image: linear-gradient(180deg,
+    var(--hero-grad-1) 23%,
+    var(--hero-grad-2) 50%,
+    var(--hero-grad-3) 74%,
+    var(--hero-grad-4) 90%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* PC 제목 크기 — 텍스트 영역 실제 너비(cqi) 기준.
+   2번째 줄 = min(텍스트 영역의 9.2%, 62px), 1번째 줄 = 2번째 줄 × 0.86 (2번째 줄이 약 16% 큼)
+   9.2cqi 는 Pretendard 기준 2번째 줄 너비가 텍스트 영역의 약 92% 이하가 되도록 계산한 값 */
+.hero-title-box { container-type: inline-size; --hero-t2: clamp(2.25rem, 9.2cqi, 3.875rem); }
+.hero-l1 { font-size: calc(var(--hero-t2) * .86); line-height: 1.22; }
+.hero-l2 { font-size: var(--hero-t2); line-height: 1.2; font-weight: 850; }
+
+.hero-bg {
+  background-color: #102D43;
+  background-image:
+    radial-gradient(60% 55% at 78% 100%, rgba(34, 168, 138, .22), transparent 70%),
+    radial-gradient(45% 50% at 10% 110%, rgba(19, 53, 77, .9), transparent 70%),
+    linear-gradient(180deg, #102D43 0%, #0D293C 100%); /* 헤더(#102D43)와 이어지도록 위쪽을 메인 네이비로 */
+}
+.hero-circle {
+  background: radial-gradient(circle at 50% 28%, var(--hero-mint-1) 0%, var(--hero-mint-2) 42%, var(--hero-mint-3) 78%);
+  box-shadow: 0 0 120px 10px rgba(94, 217, 182, .25);
+}
+
+/* ── 민트 형광펜 밑줄 (글자 아래쪽 띠, 끝을 부드럽게) ── */
+.mint-mark {
+  padding: 0 .12em;
+  background-image: linear-gradient(transparent 58%, rgba(134, 251, 212, .85) 58%, rgba(134, 251, 212, .85) 92%, transparent 92%);
+  background-repeat: no-repeat;
+  border-radius: .35em .2em .4em .25em;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+}
+
+/* ── WhyClass 🤔 배경 이미지 — 블러 대신 가장자리 페이드 ── */
+.why-emoji {
+  width: 90px;
+  left: 4px;
+  top: -70px;
+  opacity: .42;
+  -webkit-mask-image: radial-gradient(closest-side, #000 52%, rgba(0,0,0,.55) 74%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 52%, rgba(0,0,0,.55) 74%, transparent 100%);
+}
+@media (min-width: 768px) { .why-emoji { width: 160px; left: 3%; top: -30px; opacity: .45; } }
+@media (min-width: 1024px) { .why-emoji { width: 205px; left: calc(50% - 585px); top: -66px; opacity: .46; } }
+
+/* ── WhyClass 오른쪽 강의 카드 — 왼쪽 위 광원, 오른쪽·아래로 떨어지는 민트 그림자 ── */
+.why-card-dark {
+  box-shadow: 7px 9px 18px -2px rgba(34, 168, 138, .30);
+  transition: transform 230ms ease-out, box-shadow 230ms ease-out;
+}
+@media (hover: hover) {
+  .why-card-dark:hover { transform: scale(1.01); box-shadow: 9px 12px 22px -2px rgba(34, 168, 138, .40); }
+}
+@media (prefers-reduced-motion: reduce) { .why-card-dark { transition: none; } .why-card-dark:hover { transform: none; } }
+
+/* ── The Long View 라인 ───────────────────── */
+.lv-path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.4s cubic-bezier(.45,.05,.2,1) .35s forwards; }
+.lv-node { opacity: 0; animation: fadeIn .6s ease forwards; animation-delay: var(--d, 1s); }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.lv-pulse { animation: pulse 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes pulse { 0%,100% { opacity: .35; transform: scale(1); } 50% { opacity: .9; transform: scale(1.6); } }
+.glow-drift { animation: drift 18s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-60px,40px,0); } }
+
+.scroll-cue { animation: cue 2.2s ease-in-out infinite; transform-origin: top; }
+@keyframes cue { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* 모바일: 효과 축소 */
+@media (max-width: 767px) {
+  .reveal { transform: translateY(12px); transition-duration: .55s; }
+  .glow-drift, .lv-pulse { animation: none; }
+}
+
+/* 움직임 줄이기 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-zoom { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-line > span, .fade-in, .lv-node { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .lv-path { animation: none !important; stroke-dashoffset: 0 !important; }
+  .glow-drift, .lv-pulse, .scroll-cue { animation: none !important; }
+  .cta, .cta::after, .cta .cta-arrow { transition: none !important; }
+}
