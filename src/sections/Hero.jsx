@@ -74,7 +74,7 @@ export default function Hero() {
 
       <div className="container-page relative grid grid-cols-1 md:min-h-[430px] md:grid-cols-12 md:items-center md:gap-4 lg:min-h-[560px] lg:gap-8">
         <div className="relative z-10 flex flex-col items-center pb-10 pt-6 text-center md:col-span-7 md:items-start md:py-14 md:text-left lg:py-16">
-          <p className="fade-in hidden items-center rounded-full bg-brand-orange px-4 py-1.5 text-[0.8125rem] font-bold text-navy-deep md:inline-flex">
+          <p className="fade-in hidden items-center rounded-full bg-[#6EDCBC] px-4 py-1.5 text-[0.8125rem] font-bold text-navy-deep md:inline-flex">
             {HERO_COPY.tag}
           </p>
 
