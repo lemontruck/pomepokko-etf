@@ -117,3 +117,11 @@ GTM의 GA4 태그는 기본적으로 beacon 전송을 사용합니다. 그래도
 
 - Pretendard — SIL Open Font License 1.1 (jsDelivr CDN)
 - Inter — SIL Open Font License 1.1 (Google Fonts)
+
+## 배포 연결 확인
+
+- GitHub 저장소: `lemontruck/pomepokko-etf` (`main` 브랜치)
+- Vercel 프로젝트: `pomepokko-etf`
+- GitHub에 `main` 브랜치의 새 커밋이 등록되면 Vercel이 자동으로 배포를 시도합니다.
+- 배포 상태는 Vercel 프로젝트의 **Deployments** 메뉴에서 확인합니다.
+- Vercel 인증 관련 오류(`Sudo mode challenge canceled`)가 발생하면, 설정 변경보다 먼저 Vercel 계정의 인증 과정을 확인합니다.
