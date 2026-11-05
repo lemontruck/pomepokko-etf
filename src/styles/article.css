@@ -42,3 +42,6 @@
 
 /* 텍스트로 유지되는 인라인 형광펜 강조 */
 .etf-article .ea-highlight { background: linear-gradient(transparent 38%, #b2f8dc 38%, #b2f8dc 90%, transparent 90%); color: inherit; font-weight: 700; padding: 0 .06em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+/* ETF 선택 기준 아티클: 참고 이미지의 제목 왼쪽 세로 바 */
+.etf-article--criteria h2 { border-left: 6px solid #555; padding-left: 1.1rem; }
