@@ -21,6 +21,7 @@ import { etfInvestmentGuide } from './articles/etf-investment-guide';
 import { usEtfInvestmentGuide } from './articles/us-etf-investment-guide';
 
 /** body 가 있는 글은 자체 아티클 페이지, 없는 글은 원문 링크형 상세 페이지로 표시됩니다. */
-export const POSTS = [usEtfInvestmentGuide, etfInvestmentGuide];
+// 새 글은 이미지 6개 업로드 확인 후 공개합니다.
+export const POSTS = [etfInvestmentGuide];
 
 export const sortedPosts = () => [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
