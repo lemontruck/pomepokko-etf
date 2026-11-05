@@ -18,8 +18,9 @@
  * 메인 페이지에는 date 기준 최신 3개가 노출됩니다.
  */
 import { etfInvestmentGuide } from './articles/etf-investment-guide';
+import { usEtfInvestmentGuide } from './articles/us-etf-investment-guide';
 
 /** body 가 있는 글은 자체 아티클 페이지, 없는 글은 원문 링크형 상세 페이지로 표시됩니다. */
-export const POSTS = [etfInvestmentGuide];
+export const POSTS = [usEtfInvestmentGuide, etfInvestmentGuide];
 
 export const sortedPosts = () => [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
