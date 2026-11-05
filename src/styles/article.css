@@ -39,3 +39,6 @@
 .ea-toc li span{color:#4B5F66;flex:none}.ea-toc a{color:#0C2732;text-underline-offset:4px}.ea-toc a:hover{text-decoration:underline}
 .ea-disc{margin-top:2.5rem;padding:1.25rem;border-radius:16px;background:#fff;box-shadow:0 0 0 1px rgba(12,39,50,.08);font-size:.8125rem;line-height:1.65;color:#4B5F66}
 .ea-disc-d{margin-top:.5rem;font-weight:600;color:#0C2732}
+
+/* 텍스트로 유지되는 인라인 형광펜 강조 */
+.etf-article .ea-highlight { background: linear-gradient(transparent 38%, #b2f8dc 38%, #b2f8dc 90%, transparent 90%); color: inherit; font-weight: 700; padding: 0 .06em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
