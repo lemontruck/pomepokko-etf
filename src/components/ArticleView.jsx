@@ -16,7 +16,7 @@ const sid = (i) => `sec-${i}`;
 // 원문 내 **강조** 표현을 실제 굵은 글씨로 표시
 function richText(value) {
   if (typeof value !== 'string') return value;
-  return value.split(/(\\*\\*[^*]+\\*\\*)/g).map((part, i) =>
+  return value.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
     part.startsWith('**') && part.endsWith('**')
       ? <strong key={i}>{part.slice(2, -2)}</strong>
       : part
