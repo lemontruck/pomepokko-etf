@@ -7,10 +7,10 @@ import feesTaxes from '../../assets/articles/feesTaxes.webp';
 import longTerm from '../../assets/articles/longTerm.webp';
 
 export const ARTICLE_IMAGES = { basics, types, selection, buying, feesTaxes, longTerm,
-  usEtf1: '/articles/us-etf-01-investment-basics.png',
-  usEtf2: '/articles/us-etf-02-domestic-vs-us.png',
-  usEtf3: '/articles/us-etf-03-etf-types.png',
-  usEtf4: '/articles/us-etf-04-voo-vs-ivv.png',
-  usEtf5: '/articles/us-etf-05-monthly-investment.png',
-  usEtf6: '/articles/us-etf-06-review-checklist.png',
+  usEtf1: '/us-etf-01-investment-basics.png',
+  usEtf2: '/us-etf-02-domestic-vs-us.png',
+  usEtf3: '/us-etf-03-etf-types.png',
+  usEtf4: '/us-etf-04-voo-vs-ivv.png',
+  usEtf5: '/us-etf-05-monthly-investment.png',
+  usEtf6: '/us-etf-06-review-checklist.png',
 };
