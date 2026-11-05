@@ -14,7 +14,7 @@ export const REVIEW_DISPLAY = {
 export const EXAMPLE_SCENARIOS = [
   {
     id: 'busy-30s',
-    displayName: 'ㄱ',
+    displayName: 'K**',
     displayAge: 34,
     exampleRating: 5,
     persona: '시간 부족형 · 30대 직장인',
@@ -23,7 +23,7 @@ export const EXAMPLE_SCENARIOS = [
   },
   {
     id: 'retire-40s',
-    displayName: 'ㅂ',
+    displayName: 'P**',
     displayAge: 42,
     exampleRating: 5,
     persona: '노후 준비형 · 40대 직장인',
@@ -32,7 +32,7 @@ export const EXAMPLE_SCENARIOS = [
   },
   {
     id: 'beginner-late30s',
-    displayName: 'ㅇ',
+    displayName: 'L**',
     displayAge: 38,
     exampleRating: 5,
     persona: '투자 초보형 · 30대 후반 직장인',
@@ -41,7 +41,7 @@ export const EXAMPLE_SCENARIOS = [
   },
   {
     id: 'stock-40s',
-    displayName: 'ㅊ',
+    displayName: 'C**',
     displayAge: 45,
     exampleRating: 5,
     persona: '기존 주식 투자 경험형 · 40대 직장인',
@@ -50,7 +50,7 @@ export const EXAMPLE_SCENARIOS = [
   },
   {
     id: 'workingmom-30s',
-    displayName: 'ㅈ',
+    displayName: 'J**',
     displayAge: 36,
     exampleRating: 5,
     persona: '현실적인 수강 평가형 · 30대 워킹맘',
