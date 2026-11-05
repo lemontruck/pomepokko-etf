@@ -13,7 +13,7 @@ export const ARTICLE_IMAGES = { basics, types, selection, buying, feesTaxes, lon
   usEtf4: '/us-etf-04-voo-vs-ivv.png',
   usEtf5: '/us-etf-05-monthly-investment.png',
   usEtf6: '/us-etf-06-review-checklist.png',
-  etfCriteria1: '/etf-criteria-01-sp500-vs-nasdaq.png',
-  etfCriteria2: '/etf-criteria-02-three-checks.png',
-  etfCriteria3: '/etf-criteria-03-etf-comparison.png',
+  etfCriteria1: '/S&P500과 나스닥100 투자 대상 비교-1.png',
+  etfCriteria2: '/ETF 선택 전 3가지 체크리스트-2.png',
+  etfCriteria3: '/같은 S&P500 ETF, 무엇이 다를까_-3.png',
 };
