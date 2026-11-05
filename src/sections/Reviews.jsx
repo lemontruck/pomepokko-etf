@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Reveal from '../components/Reveal';
-import { EXAMPLE_SCENARIOS, REVIEW_DISPLAY } from '../data/reviews';
-
-const isExample = REVIEW_DISPLAY.mode !== 'verified';
+import { REVIEWS } from '../data/reviews';
 
 /** 후기 카드 — 본문 전문 표시, 높이는 내용에 맞춰 자동 */
 function ScenarioCard({ item }) {
@@ -11,18 +9,10 @@ function ScenarioCard({ item }) {
       className="flex h-full flex-col rounded-[20px] bg-white p-6 ring-1 ring-ink/[0.07] transition-transform duration-300 ease-out motion-reduce:transition-none sm:p-7 [@media(hover:hover)]:hover:z-10 [@media(hover:hover)]:hover:scale-[1.02] motion-reduce:[@media(hover:hover)]:hover:scale-100"
       aria-labelledby={`review-title-${item.id}`}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span className="font-bold text-ink">{item.displayName}</span>
-          <span className="text-[0.875rem] text-ink-muted">{item.displayAge}세 · {item.persona}</span>
-        </div>
-        {isExample && <span className="rounded-full bg-ivory px-2.5 py-1 text-[0.75rem] font-semibold text-ink-muted">가상 후기 예시</span>}
-      </div>
-      <p className="mt-2 text-[1.1rem] tracking-[0.12em] text-brand-orange" aria-label="예시 별점 5점">★★★★★ <span className="text-[0.75rem] tracking-normal text-ink-muted">(예시)</span></p>
-      <h3 id={`review-title-${item.id}`} className="mt-3 text-[1.125rem] font-bold leading-[1.45] tracking-tight text-ink [text-wrap:pretty] sm:text-[1.1875rem]">
-        {item.title}
+      <p className="text-[0.875rem] font-semibold text-brand-orange">수강 후기 · {item.author}</p>
+      <h3 id={`review-title-${item.id}`} className="mt-3 text-[1.125rem] font-bold leading-[1.55] tracking-tight text-ink sm:text-[1.1875rem]">
+        {item.quote}
       </h3>
-      <p className="mt-3 text-[0.9375rem] leading-[1.8] text-ink-muted">{item.body}</p>
     </article>
   );
 }
@@ -94,7 +84,7 @@ function MobileCarousel({ items }) {
 }
 
 export default function Reviews() {
-  const items = EXAMPLE_SCENARIOS;
+  const items = REVIEWS;
   if (!items.length) return null;
   return (
     <section id="reviews" aria-labelledby="r-title" className="bg-ivory py-24 sm:py-32">
@@ -102,12 +92,6 @@ export default function Reviews() {
         <Reveal as="h2" id="r-title" className="max-w-2xl text-[clamp(1.875rem,4.6vw,2.9rem)] font-bold leading-[1.25] tracking-tighter2 text-ink [text-wrap:balance]">
           수강생들의 생생한 ETF 강의 후기
         </Reveal>
-
-        {isExample && (
-          <p className="mt-4 max-w-3xl text-[0.9375rem] leading-relaxed text-ink-muted">
-            아래 카드는 학습자 유형을 바탕으로 구성한 <strong>가상 후기 예시</strong>입니다. 이름·나이·별점은 실제 수강생 정보나 검증된 평가가 아닙니다.
-          </p>
-        )}
 
         {/* PC·태블릿 그리드 — 같은 줄 카드 높이를 맞추고, 전문 길이에 따라 줄 높이가 늘어남 */}
         <ul className="mt-10 hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
@@ -123,12 +107,6 @@ export default function Reviews() {
           <MobileCarousel items={items} />
         </div>
 
-        {/* 예시 문구 고지 — 실제 후기 승인 확보 전까지 유지 (data/reviews.js REVIEW_DISPLAY.mode) */}
-        {isExample && (
-          <p className="mt-6 text-[0.8125rem] leading-relaxed text-ink-muted md:mt-8">
-            ※ 실제 수강 후기 및 검증된 별점이 아닌 팀 프로젝트용 가상 사례입니다.
-          </p>
-        )}
       </div>
     </section>
   );
