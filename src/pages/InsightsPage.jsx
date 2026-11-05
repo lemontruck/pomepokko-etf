@@ -28,7 +28,7 @@ export default function InsightsPage() {
           </a>
           <h1 className="mt-8 text-[clamp(2rem,5.2vw,3.25rem)] font-bold leading-[1.2] tracking-tightest">ETF 투자 인사이트</h1>
           <p className="mt-5 max-w-2xl text-[1.0625rem] leading-[1.75] text-white/70">
-            팀 프로젝트에서 ETF 투자 기초 정보를 이해하기 쉽게 정리한 교육용 아티클입니다. 강사가 직접 작성한 글이 아니며, 이 페이지에서 전문을 읽을 수 있습니다.
+            ETF 투자에 필요한 정보를 정리한 글을 모았습니다.
           </p>
         </div>
       </section>
