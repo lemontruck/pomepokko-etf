@@ -8,7 +8,7 @@ export const etfSelectionCriteria = {
   "publishedAt": "2026-11-05",
   "checkedAt": null,
   "category": "ETF 기초",
-  "thumbnail": "/etf-criteria-01-sp500-vs-nasdaq.png",
+  "thumbnail": "/S&P500과 나스닥100 투자 대상 비교-1.png",
   "sourceUrl": null,
   "usageRights": "full_text",
   "native": true,
