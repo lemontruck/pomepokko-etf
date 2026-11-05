@@ -68,6 +68,7 @@ export default function ArticleView({ post, back }) {
     const [t, a, c, d] = x;
     switch (t) {
       case 'p': return <p key={i}>{richText(a)}</p>;
+      case 'link': return <p key={i}><a href={c} className="text-inherit underline underline-offset-4 decoration-ink/50 hover:decoration-ink">{richText(a)}</a></p>;
       case 'lead': return <p key={i} className="ea-lead">{richText(a)}</p>;
       case 'note': return <p key={i} className="ea-note ea-note-p">※ {a}</p>;
       case 'h2': return <h2 key={i} id={sid(i)}>{a}</h2>;
