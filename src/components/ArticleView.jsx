@@ -142,7 +142,7 @@ export default function ArticleView({ post, back }) {
           <time className="num ml-2" dateTime={post.date}>{post.date.replaceAll('-', '.')}</time>
         </p>
         <h1 className="mt-3 text-[clamp(1.875rem,4.4vw,2.75rem)] font-bold leading-[1.28] tracking-tighter2 text-ink">{post.title}</h1>
-        <div className="etf-article">{blocks}</div>
+        <div className={`etf-article${post.id === 'etf-selection-criteria' ? ' etf-article--criteria' : ''}`}>{blocks}</div>
         <div className="ea-disc">
           <p>{post.disclaimer}</p>
           {post.checkedAt && <p className="ea-disc-d">정보 확인 기준일: {post.checkedAt}</p>}
