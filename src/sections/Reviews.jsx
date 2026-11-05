@@ -98,7 +98,6 @@ export default function Reviews() {
           수강생들의 생생한 ETF 강의 후기
         </Reveal>
 
-        <p className="mt-4 text-[0.8125rem] text-ink-muted">※ 이름·나이·별점은 실제 작성자의 확인된 정보가 아닌 표시용 정보입니다.</p>
 
         {/* PC·태블릿 그리드 — 같은 줄 카드 높이를 맞추고, 전문 길이에 따라 줄 높이가 늘어남 */}
         <ul className="mt-10 hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
