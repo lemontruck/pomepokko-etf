@@ -11,7 +11,7 @@ function ScenarioCard({ item }) {
     >
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <span className="font-bold text-ink">{item.displayName}</span>
-        <span className="text-[0.875rem] text-ink-muted">{item.displayAge}세 · {item.persona}</span>
+        <span className="text-[0.875rem] text-ink-muted">{item.displayAge}세</span>
       </div>
       <p className="mt-2 text-[1.1rem] tracking-[0.12em] text-brand-orange" aria-label="별점 표시">★★★★★</p>
       <h3 id={`review-title-${item.id}`} className="mt-3 text-[1.125rem] font-bold leading-[1.45] tracking-tight text-ink [text-wrap:pretty] sm:text-[1.1875rem]">
