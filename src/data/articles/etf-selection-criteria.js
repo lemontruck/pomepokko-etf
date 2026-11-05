@@ -268,8 +268,9 @@ export const etfSelectionCriteria = {
       "ETF를 실제로 비교하는 방법이 궁금하다면 투자 목적, 추종지수, 비용, 거래 유동성 등 6가지 기준을 정리한 가이드를 참고해 보세요."
     ],
     [
-      "p",
-      "미국 ETF 선택 기준 6가지와 실제 비교 방법 알아보기"
+      "link",
+      "미국 ETF 선택 기준 6가지와 실제 비교 방법 알아보기",
+      "https://pomepokko-etf.vercel.app/insights/etf-investment-guide"
     ],
     [
       "p",
