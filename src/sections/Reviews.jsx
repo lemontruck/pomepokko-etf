@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Reveal from '../components/Reveal';
-import { REVIEWS } from '../data/reviews';
+import { EXAMPLE_SCENARIOS } from '../data/reviews';
 
 /** 후기 카드 — 본문 전문 표시, 높이는 내용에 맞춰 자동 */
 function ScenarioCard({ item }) {
@@ -9,10 +9,15 @@ function ScenarioCard({ item }) {
       className="flex h-full flex-col rounded-[20px] bg-white p-6 ring-1 ring-ink/[0.07] transition-transform duration-300 ease-out motion-reduce:transition-none sm:p-7 [@media(hover:hover)]:hover:z-10 [@media(hover:hover)]:hover:scale-[1.02] motion-reduce:[@media(hover:hover)]:hover:scale-100"
       aria-labelledby={`review-title-${item.id}`}
     >
-      <p className="text-[0.875rem] font-semibold text-brand-orange">수강 후기 · {item.author}</p>
-      <h3 id={`review-title-${item.id}`} className="mt-3 text-[1.125rem] font-bold leading-[1.55] tracking-tight text-ink sm:text-[1.1875rem]">
-        {item.quote}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span className="font-bold text-ink">{item.displayName}</span>
+        <span className="text-[0.875rem] text-ink-muted">{item.displayAge}세 · {item.persona}</span>
+      </div>
+      <p className="mt-2 text-[1.1rem] tracking-[0.12em] text-brand-orange" aria-label="별점 표시">★★★★★</p>
+      <h3 id={`review-title-${item.id}`} className="mt-3 text-[1.125rem] font-bold leading-[1.45] tracking-tight text-ink [text-wrap:pretty] sm:text-[1.1875rem]">
+        {item.title}
       </h3>
+      <p className="mt-3 text-[0.9375rem] leading-[1.8] text-ink-muted">{item.body}</p>
     </article>
   );
 }
@@ -84,7 +89,7 @@ function MobileCarousel({ items }) {
 }
 
 export default function Reviews() {
-  const items = REVIEWS;
+  const items = EXAMPLE_SCENARIOS;
   if (!items.length) return null;
   return (
     <section id="reviews" aria-labelledby="r-title" className="bg-ivory py-24 sm:py-32">
@@ -92,6 +97,8 @@ export default function Reviews() {
         <Reveal as="h2" id="r-title" className="max-w-2xl text-[clamp(1.875rem,4.6vw,2.9rem)] font-bold leading-[1.25] tracking-tighter2 text-ink [text-wrap:balance]">
           수강생들의 생생한 ETF 강의 후기
         </Reveal>
+
+        <p className="mt-4 text-[0.8125rem] text-ink-muted">※ 이름·나이·별점은 실제 작성자의 확인된 정보가 아닌 표시용 정보입니다.</p>
 
         {/* PC·태블릿 그리드 — 같은 줄 카드 높이를 맞추고, 전문 길이에 따라 줄 높이가 늘어남 */}
         <ul className="mt-10 hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
