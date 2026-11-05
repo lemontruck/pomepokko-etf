@@ -13,6 +13,16 @@ import '../styles/article.css';
 
 const sid = (i) => `sec-${i}`;
 
+// 원문 내 **강조** 표현을 실제 굵은 글씨로 표시
+function richText(value) {
+  if (typeof value !== 'string') return value;
+  return value.split(/(\\*\\*[^*]+\\*\\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**')
+      ? <strong key={i}>{part.slice(2, -2)}</strong>
+      : part
+  );
+}
+
 function Table({ t }) {
   return (
     <figure className="ea-fig">
@@ -27,9 +37,9 @@ function Table({ t }) {
                 {r.map((c, ci) => {
                   const cl = typeof c === 'object' ? c : { text: c };
                   return ci === 0 ? (
-                    <th key={ci} scope="row">{cl.text}</th>
+                    <th key={ci} scope="row">{richText(cl.text)}</th>
                   ) : (
-                    <td key={ci} colSpan={cl.span || 1} className={cl.span ? 'ea-span' : undefined}>{cl.text}</td>
+                    <td key={ci} colSpan={cl.span || 1} className={cl.span ? 'ea-span' : undefined}>{richText(cl.text)}</td>
                   );
                 })}
               </tr>
@@ -57,13 +67,13 @@ export default function ArticleView({ post, back }) {
   const blocks = post.body.map((x, i) => {
     const [t, a, c, d] = x;
     switch (t) {
-      case 'p': return <p key={i}>{a}</p>;
-      case 'lead': return <p key={i} className="ea-lead">{a}</p>;
+      case 'p': return <p key={i}>{richText(a)}</p>;
+      case 'lead': return <p key={i} className="ea-lead">{richText(a)}</p>;
       case 'note': return <p key={i} className="ea-note ea-note-p">※ {a}</p>;
       case 'h2': return <h2 key={i} id={sid(i)}>{a}</h2>;
       case 'h3': return <h3 key={i}>{a}</h3>;
       case 'pt': return <div key={i} className="ea-pt"><p className="ea-pt-t">{a}</p><p>{c}</p></div>;
-      case 'ul': return <ul key={i} className="ea-ul">{a.map((y, j) => <li key={j}>{y}</li>)}</ul>;
+      case 'ul': return <ul key={i} className="ea-ul">{a.map((y, j) => <li key={j}>{richText(y)}</li>)}</ul>;
       case 'check':
         return (
           <ul key={i} className="ea-check">
