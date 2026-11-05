@@ -8,7 +8,7 @@ export const usEtfInvestmentGuide = {
   "publishedAt": "2026-11-05",
   "checkedAt": "2026년 11월 5일",
   "category": "미국 ETF",
-  "thumbnail": "/articles/us-etf-01-investment-basics.png",
+  "thumbnail": "/us-etf-01-investment-basics.png",
   "sourceUrl": null,
   "usageRights": "full_text",
   "native": true,
@@ -770,28 +770,16 @@ export const usEtfInvestmentGuide = {
       "us_etf_article_cta_1"
     ],
     [
-      "p",
-      "미국 ETF 투자 기초부터 상품 선택 기준까지 체계적으로 공부하고 싶다면 관련 교육 과정을 확인해 보세요."
-    ],
-    [
       "cta",
       "ETF의 추종지수와 운용 비용을 비교하는 방법을 더 자세히 학습하고 싶다면 강의 커리큘럼을 살펴보세요.",
       "강의 보러가기",
       "us_etf_article_cta_2"
     ],
     [
-      "p",
-      "ETF의 추종지수와 운용 비용을 비교하는 방법을 더 자세히 학습하고 싶다면 강의 커리큘럼을 살펴보세요."
-    ],
-    [
       "cta",
       "투자 계획을 세우고 ETF를 비교하는 과정을 단계적으로 학습하고 싶다면 강의 상세페이지에서 교육 내용을 확인할 수 있습니다.",
       "강의 보러가기",
       "us_etf_article_cta_3"
-    ],
-    [
-      "p",
-      "투자 계획을 세우고 ETF를 비교하는 과정을 단계적으로 학습하고 싶다면 강의 상세페이지에서 교육 내용을 확인할 수 있습니다."
     ],
     [
       "hr"
