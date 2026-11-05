@@ -13,4 +13,7 @@ export const ARTICLE_IMAGES = { basics, types, selection, buying, feesTaxes, lon
   usEtf4: '/us-etf-04-voo-vs-ivv.png',
   usEtf5: '/us-etf-05-monthly-investment.png',
   usEtf6: '/us-etf-06-review-checklist.png',
+  etfCriteria1: '/etf-criteria-01-sp500-vs-nasdaq.png',
+  etfCriteria2: '/etf-criteria-02-three-checks.png',
+  etfCriteria3: '/etf-criteria-03-etf-comparison.png',
 };
