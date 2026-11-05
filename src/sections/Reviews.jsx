@@ -10,7 +10,7 @@ function ScenarioCard({ item }) {
       aria-labelledby={`review-title-${item.id}`}
     >
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-        <span className="font-bold text-ink">{item.displayName}</span>
+        <span className="font-bold text-ink">{item.displayName}님</span>
         <span className="text-[0.875rem] text-ink-muted">{item.displayAge}세</span>
       </div>
       <p className="mt-2 text-[1.1rem] tracking-[0.12em] text-brand-orange" aria-label="별점 표시">★★★★★</p>
