@@ -19,8 +19,9 @@
  */
 import { etfInvestmentGuide } from './articles/etf-investment-guide';
 import { usEtfInvestmentGuide } from './articles/us-etf-investment-guide';
+import { etfSelectionCriteria } from './articles/etf-selection-criteria';
 
 /** body 가 있는 글은 자체 아티클 페이지, 없는 글은 원문 링크형 상세 페이지로 표시됩니다. */
-export const POSTS = [usEtfInvestmentGuide, etfInvestmentGuide];
+export const POSTS = [etfSelectionCriteria, usEtfInvestmentGuide, etfInvestmentGuide];
 
 export const sortedPosts = () => [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
