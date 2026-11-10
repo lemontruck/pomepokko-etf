@@ -94,6 +94,7 @@ export default function Hero() {
 
           {/* CTA는 애니메이션 없이 즉시 노출 */}
           <div className="flex w-full flex-col items-center gap-3 md:mt-8 md:items-start md:gap-4">
+            <p className="text-center text-[1.125rem] font-bold leading-snug text-white md:hidden">월 300만원 금융소득, 무엇부터?</p>
             <CtaButton id="hero-cta" position="hero" size="lg" className="w-full max-w-[340px] md:w-auto" />
             <p className="flex max-w-[30rem] items-start gap-1.5 text-left text-[0.75rem] leading-relaxed text-white/50 md:gap-2 md:text-[0.8125rem] md:text-white/55">
               <Info aria-hidden="true" className="mt-[3px] h-3 w-3 shrink-0 md:h-3.5 md:w-3.5" />
