@@ -32,11 +32,11 @@ export default function StickyCta() {
       aria-hidden={!show}
     >
       <div className="flex items-center gap-3">
-        <p className="min-w-0 flex-1 text-[0.8125rem] leading-snug text-white/80">
+        <p className="hidden min-w-0 flex-1 text-[0.8125rem] leading-snug text-white/80">
           미국 ETF 투자법<br />
           <span className="text-white/55">{COURSE.lessons} 강의 내용 확인</span>
         </p>
-        <CtaButton position="sticky" className="shrink-0 !min-h-[48px] !px-6 !text-base" />
+        <CtaButton position="sticky" className="w-full !min-h-[48px] !px-4 !text-base" />
       </div>
     </div>
   );
