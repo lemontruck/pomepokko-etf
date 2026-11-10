@@ -15,6 +15,14 @@ export const CTA_LABELS = {
   default: '강의 보러가기',
   preview: '1화 무료 보러가기',
 };
+/** 모바일(767px 이하) 랜딩 CTA 위치별 문구. 버튼 목적지 및 cta_position 값은 동일합니다. */
+export const MOBILE_CTA_LABELS = {
+  hero: '내 ETF 선택 기준 찾기',
+  curriculum: '전체 강의 구성 보기',
+  preview: '1화 먼저 만나보기',
+  final: 'ETF 공부 시작하기',
+  sticky: '1화 무료 보러가기',
+};
 /** 하위 호환용 — 기본 CTA 문구 */
 export const CTA_LABEL = CTA_LABELS.default;
 
