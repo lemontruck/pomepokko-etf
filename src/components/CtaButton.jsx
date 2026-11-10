@@ -22,8 +22,7 @@ function buildUrl() {
  */
 export default function CtaButton({ position, pageType = 'landing', size = 'md', className = '', id, label: labelOverride, newTab = CTA_NEW_TAB }) {
   const conf = CTA_POSITIONS[position] || { position, labelKey: 'default' };
-  const label = labelOverride || CTA_LABELS[conf.labelKey] || CTA_LABELS.default; // 아티클 CTA는 글 맥락 문구 사용
-  const mobileLabel = pageType === 'landing' ? MOBILE_CTA_LABELS[position] : null;
+  const label = labelOverride || (pageType === 'landing' && MOBILE_CTA_LABELS[position]) || CTA_LABELS[conf.labelKey] || CTA_LABELS.default; // 랜딩 CTA는 PC·모바일 공통 문구, 아티클 CTA는 개별 문구 유지
   const sizeClass = size === 'lg' ? 'cta-lg' : size === 'sm' ? 'cta-sm' : '';
   return (
     <a
@@ -32,8 +31,7 @@ export default function CtaButton({ position, pageType = 'landing', size = 'md',
       onClick={(e) => {
         const href = buildUrl();
         if (FORWARD_UTM) e.currentTarget.href = href;
-        const text = mobileLabel && window.matchMedia('(max-width: 767px)').matches ? mobileLabel : label;
-        trackCtaClick({ pageType, position: conf.position, text, destination: href });
+        trackCtaClick({ pageType, position: conf.position, text: label, destination: href });
       }}
       target={newTab ? '_blank' : undefined}
       rel={newTab ? 'noopener' : undefined}
@@ -41,7 +39,7 @@ export default function CtaButton({ position, pageType = 'landing', size = 'md',
       data-cta="course-detail"
       data-cta-position={conf.position}
     >
-      <span className="relative">{mobileLabel ? <><span className="md:hidden">{mobileLabel}</span><span className="hidden md:inline">{label}</span></> : label}</span>
+      <span className="relative">{label}</span>
       <ArrowRight aria-hidden="true" className="cta-arrow relative h-[1.1em] w-[1.1em]" strokeWidth={2.4} />
       {newTab && <span className="sr-only">(새 창에서 공식 강의 상세페이지 열림)</span>}
     </a>
