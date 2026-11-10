@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { COURSE_DETAIL_URL, CTA_LABELS, CTA_POSITIONS, CTA_NEW_TAB, FORWARD_UTM } from '../config/site';
+import { COURSE_DETAIL_URL, CTA_LABELS, MOBILE_CTA_LABELS, CTA_POSITIONS, CTA_NEW_TAB, FORWARD_UTM } from '../config/site';
 import { trackCtaClick } from '../lib/analytics';
 import { utmOnly } from '../lib/attribution';
 
@@ -23,6 +23,7 @@ function buildUrl() {
 export default function CtaButton({ position, pageType = 'landing', size = 'md', className = '', id, label: labelOverride, newTab = CTA_NEW_TAB }) {
   const conf = CTA_POSITIONS[position] || { position, labelKey: 'default' };
   const label = labelOverride || CTA_LABELS[conf.labelKey] || CTA_LABELS.default; // 아티클 CTA는 글 맥락 문구 사용
+  const mobileLabel = pageType === 'landing' ? MOBILE_CTA_LABELS[position] : null;
   const sizeClass = size === 'lg' ? 'cta-lg' : size === 'sm' ? 'cta-sm' : '';
   return (
     <a
@@ -31,7 +32,8 @@ export default function CtaButton({ position, pageType = 'landing', size = 'md',
       onClick={(e) => {
         const href = buildUrl();
         if (FORWARD_UTM) e.currentTarget.href = href;
-        trackCtaClick({ pageType, position: conf.position, text: label, destination: href });
+        const text = mobileLabel && window.matchMedia('(max-width: 767px)').matches ? mobileLabel : label;
+        trackCtaClick({ pageType, position: conf.position, text, destination: href });
       }}
       target={newTab ? '_blank' : undefined}
       rel={newTab ? 'noopener' : undefined}
@@ -39,7 +41,7 @@ export default function CtaButton({ position, pageType = 'landing', size = 'md',
       data-cta="course-detail"
       data-cta-position={conf.position}
     >
-      <span className="relative">{label}</span>
+      <span className="relative">{mobileLabel ? <><span className="md:hidden">{mobileLabel}</span><span className="hidden md:inline">{label}</span></> : label}</span>
       <ArrowRight aria-hidden="true" className="cta-arrow relative h-[1.1em] w-[1.1em]" strokeWidth={2.4} />
       {newTab && <span className="sr-only">(새 창에서 공식 강의 상세페이지 열림)</span>}
     </a>
