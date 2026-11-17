@@ -25,7 +25,7 @@ jobs:
           for p in [Path('src/data/articles/images.js'), Path('src/data/articles/us-etf-investment-guide.js'), Path('src/data/articles/etf-selection-criteria.js')]:
               txt = p.read_text()
               import re
-              txt = re.sub(r'(["\\\'])/([^"\\\']+\\.png)\\1', r'\\1./\\2\\1', txt)
+              txt = re.sub(r"""(['"])/([^'"]+\.png)\1""", lambda m: m.group(1) + './' + m.group(2) + m.group(1), txt)
               p.write_text(txt)
           PY
       - name: Build self-contained web app
