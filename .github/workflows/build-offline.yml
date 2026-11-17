@@ -1,0 +1,46 @@
+name: Build offline HTML ZIP
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-offline.yml'
+  workflow_dispatch:
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Adapt public image URLs for file opening
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for p in [Path('src/data/articles/images.js'), Path('src/data/articles/us-etf-investment-guide.js'), Path('src/data/articles/etf-selection-criteria.js')]:
+              txt = p.read_text()
+              import re
+              txt = re.sub(r'(["\\\'])/([^"\\\']+\\.png)\\1', r'\\1./\\2\\1', txt)
+              p.write_text(txt)
+          PY
+      - name: Build self-contained web app
+        run: npm run build:single
+      - name: Include instructions
+        run: |
+          cat > dist-single/README.txt <<'EOF'
+          ETF landing page - offline opening
+          1. Extract the whole ZIP into a folder.
+          2. Double-click index.html in Chrome or Edge.
+          3. Keep the PNG files beside index.html, otherwise article images may be missing.
+          4. External course links require internet access. Analytics may need internet.
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pomepokko-etf-offline
+          path: dist-single/
+          retention-days: 7
